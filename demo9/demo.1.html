@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <!-- 引入Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <!-- 一个未命名插槽，这个插槽是默认插槽，也就是说它会作为所有未匹配到插槽的内容的统一出口-->
+  <div id="app">
+    <base-layout>
+      <template slot="header">
+          <h1>Here might be a page title</h1>
+      </template>
+      <p>A paragraph for the main content.</p>
+      <p>And another one.</p>
+      <!-- 可以不适用template -->
+      <p slot="footer">Here's some contact info</p>
+    </base-layout>
+  </div>
+  <script>
+    Vue.component('base-layout',{
+      props:['url'],
+      template:'<div class="container"><header><slot name="header"></slot></header>'+
+        '<main><slot></slot></main>'+
+        '<footer><slot name="footer"></slot></footer></div>'
+    })
+    new Vue({
+      el:'#app'
+    })
+  </script>
+  <!-- 具名插槽 -->
+</body>
+</html>

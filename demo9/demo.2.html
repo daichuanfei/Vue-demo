@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <!-- 引入Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <!-- 一个未命名插槽，这个插槽是默认插槽，也就是说它会作为所有未匹配到插槽的内容的统一出口-->
+  <div id="app">
+    <base-button></base-button>
+    <base-button>更新</base-button>
+
+  </div>
+  <script>
+    Vue.component('base-button',{
+      template:'<button type="submit"><slot>提交</slot></button>'
+    })
+    new Vue({
+      el:'#app'
+    })
+  </script>
+  <!-- 插槽可以给一个默认内容 如果父组件为这个插槽提供了内容，则默认的内容会被替换掉-->
+</body>
+</html>

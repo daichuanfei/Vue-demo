@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <!-- 引入外部样式文件style.css -->
+  <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+  <!-- 引入Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <!-- v-model 双向绑定用于表单控件 -->
+    <div id="app">
+      <!-- camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名 -->
+      <!-- prop 可以通过 v-bind 动态赋值 -->
+      <blog-post v-bind:title="post.title"></blog-post>
+      
+      <!-- <blog-post v-bind:post-title="title"></blog-post> -->
+    </div>
+    <!-- 链入一个外部脚本文件app.js -->
+    <!-- <script type="text/javascript" src="app.js"></script> -->
+    <script>
+      Vue.component('blog-post',{
+        props:{
+          title:String,
+          likes:Number,
+          isPublished:Boolean,
+          commentIds: Array,
+          author: Object
+        },
+        template:'<div><p>{{title}}</p><p>{{likes}}</p></div>'
+      })
+      new Vue({
+        el:'#app',
+        data:{
+          post:{
+            title:'vue',
+            likes:42,
+            isPublished:true,
+            commentIds:[3,4,5],
+            author:{name:'张三'}
+          }
+
+        }
+      })
+    </script>
+    <!-- 
+      prop可以为字符串数组的形式，也可以为对象的形式
+      1、传入字符串
+      传静态值
+      <!<blog-post title="My journey with Vue"></blog-post> >
+      通过 v-bind 动态赋值
+      <! 动态赋予一个变量的值 -->
+      <!-- <blog-post v-bind:title="post.title"></blog-post> -->
+
+      <!-- 动态赋予一个复杂表达式的值 -->
+      <!-- <blog-post v-bind:title="post.title + ' by ' + post.author.name"></blog-post> >
+
+      2、传入一个数字
+      <! 即便 `42` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+      <!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+      <!-- <blog-post v-bind:likes="42"></blog-post> -->
+
+      <!-- 用一个变量进行动态赋值。-->
+      <!-- <blog-post v-bind:likes="post.likes"></blog-post>
+      3、传入一个布尔值
+      <! 包含该 prop 没有值的情况在内，都意味着 `true`。-->
+      <!-- <blog-post is-published></blog-post> -->
+
+       <!-- 即便 `false` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+       <!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+       <!-- <blog-post v-bind:is-published="false"></blog-post> -->
+
+       <!-- 用一个变量进行动态赋值。-->
+       <!-- <blog-post v-bind:is-published="post.isPublished"></blog-post> >
+      3、传入一个数组
+       <! 即便数组是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+       <!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+       <!-- <blog-post v-bind:comment-ids="[234, 266, 273]"></blog-post> -->
+
+       <!-- 用一个变量进行动态赋值。-->
+       <!-- <blog-post v-bind:comment-ids="post.commentIds"></> >
+      4、传入一个对象
+      <! 即便对象是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+      <!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+      <!-- <blog-post v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"></blog-post> -->
+
+      <!-- 用一个变量进行动态赋值。-->
+      <!-- <blog-post v-bind:author="post.author"></blog-post>>
+      5、
+     -->
+</body>
+</html>
