@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <!-- 引入外部样式文件style.css -->
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <!-- 引入Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+      <p>{{message}}</p>
+      <input v-model="message"/>
+    </div>
+    <!-- 链入一个外部脚本文件app.js -->
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
